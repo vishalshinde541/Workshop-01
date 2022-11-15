@@ -16,24 +16,31 @@ public class Gambling_Simulator {
 		int betOnEveryGame = 1;
 		int maxWin = (int) (everyDayStake * 1.5);
 		int maxLoose = (int) (everyDayStake * 0.5);
+		int daysToPlay = 20;
+		int totalAmountAtLastDay = 0;
+		
+		
+		for (int j = 0; j < daysToPlay; j++) {
+			int temp =everyDayStake;
+			while (temp > maxLoose && temp < maxWin) {
 
-		while (everyDayStake > maxLoose && everyDayStake < maxWin) {
+				isWinOrLoose();
 
-			isWinOrLoose();
-
-			if (isWinOrLoose() == 0) {
-				everyDayStake += betOnEveryGame;
-				System.out.println("Gambler Win the bet of $1");
-
-			} else {
-				everyDayStake -= betOnEveryGame;
-				System.out.println("Gambler Lost the bet of $1");
-
+				if (isWinOrLoose() == 0) {
+					temp += betOnEveryGame;	
+				} else {
+					temp -= betOnEveryGame;
+				}
 			}
+			System.out.println("After resign for day "+ j +" Stake is : " + temp);
+			totalAmountAtLastDay +=temp;
 		}
 		
-		System.out.println("After resign todays Stake is : " + everyDayStake);
-
+		if ((daysToPlay*everyDayStake) > totalAmountAtLastDay) {
+			System.out.println("Total amount lost is : " + ((daysToPlay*everyDayStake) - totalAmountAtLastDay));
+		}else {
+			System.out.println("Total amount won is :" + (totalAmountAtLastDay - (daysToPlay*everyDayStake)));
+		}
 	}
 
 }
