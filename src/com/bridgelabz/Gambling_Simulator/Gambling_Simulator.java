@@ -20,7 +20,7 @@ public class Gambling_Simulator {
 		int totalAmountAtLastDay = 0;
 		
 		
-		for (int j = 0; j < daysToPlay; j++) {
+		for (int j = 1; j <= daysToPlay; j++) {
 			int temp =everyDayStake;
 			while (temp > maxLoose && temp < maxWin) {
 
