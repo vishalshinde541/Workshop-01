@@ -49,8 +49,8 @@ public class Gambling_Simulator {
 		}
 		System.out.println();
 		
-		System.out.println("No of days won in month is : " + winDays);
-		System.out.println("No of days lost in month is : " + looseDays);
+		System.out.println("No of Luckiest days of month is : " + winDays);
+		System.out.println("No of Unluckiest days of month is : " + looseDays);
 		
 		System.out.println();
 		
