@@ -9,7 +9,6 @@ public class Gambling_Simulator {
 		
 		int everyDayStake = 100;
 		int betOnEveryGame = 1;
-		
 	}
 
 }
