@@ -11,36 +11,56 @@ public class Gambling_Simulator {
 
 	public static void main(String[] args) {
 		System.out.println("----Welcome to Gambling Simulator----");
+		
+		System.out.println();
 
 		int everyDayStake = 100;
 		int betOnEveryGame = 1;
 		int maxWin = (int) (everyDayStake * 1.5);
 		int maxLoose = (int) (everyDayStake * 0.5);
-		int daysToPlay = 20;
+		int daysOfEachMonth = 30;
 		int totalAmountAtLastDay = 0;
+		int winDays = 0;
+		int looseDays = 0;
 		
 		
-		for (int j = 1; j <= daysToPlay; j++) {
+		for (int j = 1; j <= daysOfEachMonth; j++) {
 			int temp =everyDayStake;
 			while (temp > maxLoose && temp < maxWin) {
 
 				isWinOrLoose();
 
 				if (isWinOrLoose() == 0) {
-					temp += betOnEveryGame;	
+					temp += betOnEveryGame;
 				} else {
 					temp -= betOnEveryGame;
 				}
 			}
-			System.out.println("After resign for day "+ j +" Stake is : " + temp);
+			
+			if (temp == maxWin) {
+				System.out.println("For day "+ j +" Gamblor win : " + temp);
+				winDays++;
+			}else {
+				System.out.println("For day "+ j +" Gamblor loose : " + temp);
+				looseDays++;
+			}
+			
 			totalAmountAtLastDay +=temp;
 		}
+		System.out.println();
 		
-		if ((daysToPlay*everyDayStake) > totalAmountAtLastDay) {
-			System.out.println("Total amount lost is : " + ((daysToPlay*everyDayStake) - totalAmountAtLastDay));
+		System.out.println("No of days won in month is : " + winDays);
+		System.out.println("No of days lost in month is : " + looseDays);
+		
+		System.out.println();
+		
+		if ((daysOfEachMonth*everyDayStake) > totalAmountAtLastDay) {
+			System.out.println("Total amount lost after month is : " + ((daysOfEachMonth*everyDayStake) - totalAmountAtLastDay));
 		}else {
-			System.out.println("Total amount won is :" + (totalAmountAtLastDay - (daysToPlay*everyDayStake)));
+			System.out.println("Total amount won after month is :" + (totalAmountAtLastDay - (daysOfEachMonth*everyDayStake)));
 		}
+		
+		
 	}
 
 }
